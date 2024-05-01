@@ -8,7 +8,7 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField] private Cube _prefab;
 
     private Bounds _bounds;
-    Pool<Cube> _pool;
+    private Pool<Cube> _pool;
     private int _preloadCount = 3;
     private float _yOffset = 10;
 

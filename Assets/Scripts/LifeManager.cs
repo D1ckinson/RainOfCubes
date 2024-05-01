@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class LifeManager : MonoBehaviour
 {
     public event UnityAction LifeOver;

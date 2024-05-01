@@ -6,7 +6,7 @@ public class ColorChanger : MonoBehaviour
     private Material _material;
     private Color _defaultColor = Color.white;
 
-    private bool _IsColorDefault => _material.color == _defaultColor;
+    private bool _isColorDefault => _material.color == _defaultColor;
 
     private void Awake() =>
         _material = GetComponent<MeshRenderer>().material;
@@ -16,7 +16,7 @@ public class ColorChanger : MonoBehaviour
 
     public void ChangeColor(Color color)
     {
-        if (_IsColorDefault)
+        if (_isColorDefault)
             _material.color = color;
     }
 }
