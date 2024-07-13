@@ -25,7 +25,12 @@ public class Pool<T>
 
         for (int i = 0; i < preloadCount; i++)
             Return(preloadFunc());
+
+        CurrentSpawns = 0;
     }
+
+    public int TotalSpawns { get; private set; }
+    public int CurrentSpawns { get; private set; }
 
     public T Get()
     {
@@ -33,6 +38,9 @@ public class Pool<T>
 
         _getAction(item);
         _active.Add(item);
+
+        TotalSpawns++;
+        CurrentSpawns++;
 
         return item;
     }
@@ -43,6 +51,8 @@ public class Pool<T>
 
         _pool.Enqueue(item);
         _active.Remove(item);
+
+        CurrentSpawns--;
     }
 
     public void ReturnAll() =>

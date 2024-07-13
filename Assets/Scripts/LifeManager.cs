@@ -9,14 +9,25 @@ public class LifeManager : MonoBehaviour
     private float _minLifeTime = 2;
     private float _maxLifeTime = 5;
 
-    private void OnEnable() =>
+    public float StartTime { get; private set; }
+    public float TimeLeft { get; private set; }
+
+    private void OnEnable()
+    {
+        StartTime = Random.Range(_minLifeTime, _maxLifeTime);
+        TimeLeft = StartTime;
+
         StartCoroutine(StartLifeTimer());
+    }
 
     private IEnumerator StartLifeTimer()
     {
-        float lifeTime = Random.Range(_minLifeTime, _maxLifeTime);
+        while (TimeLeft > 0)
+        {
+            TimeLeft -= Time.deltaTime;
 
-        yield return new WaitForSeconds(lifeTime);
+            yield return null;
+        }
 
         LifeOver?.Invoke();
     }
